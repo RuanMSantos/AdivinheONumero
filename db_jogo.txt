@@ -1,0 +1,11 @@
+create table if not exists `jogo`(
+	`id_jogador` int auto_increment,
+    `nm_jogador` varchar(30) not null,
+    `nm_email` varchar(40),
+    `nr_telefone` varchar(11),
+    `nm_senha` varchar(20) not null,
+    `nr_partida` int default 0,
+    `nr_vitoria` int default 0,
+    `nr_derrota` int default 0,
+    primary key (`id_jogador`)
+);
