@@ -7,4 +7,4 @@ Microsoft.EntityFrameworkCore.Design
 Pomelo.EntityFrameworkCore.MySql
 
 ...Comando......
-dotnet ef dbcontext scaffold "server=localhost;port=3306;uid=__;pwd=__;database=___" Pomelo.EntityFrameworkCore.MySql -o _pasta_ -f --no-pluralize
+dotnet ef dbcontext scaffold "server=localhost;port=3306;uid=Ruan;pwd=1234;database=db_adivinhe_o_numero" Pomelo.EntityFrameworkCore.MySql -o db -f --no-pluralize
