@@ -25,10 +25,12 @@ namespace AdivinheONumero.cs{
         }
 
         public void CaminhosLogin(string opcoes){
+            SQL comandosSQL = new SQL();
+            
             switch (opcoes){
-                case "L":
+                case "L": comandosSQL.Logar();
                 break;
-                case "N":
+                case "N": comandosSQL.NovoUsuario();
                 break;
                 case "P":
                 break;
