@@ -1,4 +1,5 @@
 ﻿using AdivinheONumero.cs;
+using AdivinheONumero.db;
 
 UI ui = new UI();
 
