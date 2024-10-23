@@ -8,3 +8,6 @@ Console.Write("Olá, seja bem vindo ao ==> ");
 ui.ExibirBoasVindas("Adivinhe o número");
 
 ui.ExibirOpcoesDeLogin();
+string opcoesLogin = Console.ReadLine()!.Trim().ToLower();
+
+ui.CaminhosLogin(opcoesLogin);
