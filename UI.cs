@@ -24,19 +24,5 @@ namespace AdivinheONumero.cs{
             Console.WriteLine();
         }
 
-        public void CaminhosLogin(string opcoes){
-            SQL comandosSQL = new SQL();
-            
-            switch (opcoes){
-                case "L": comandosSQL.Logar();
-                break;
-                case "N": comandosSQL.NovoUsuario();
-                break;
-                case "P":
-                break;
-                default: ExibirErro("Erro! Algo está errado...");
-                break;
-            }
-        }
     }
 }
