@@ -16,11 +16,11 @@ namespace AdivinheONumero.cs{
         }
         public void ExibirOpcoesDeLogin(){
             Console.WriteLine();
-            Console.WriteLine(".......[L]ogin......");
+            Console.WriteLine("[L]ogin..........");
             Console.WriteLine();
-            Console.WriteLine("...[N]ovo jogador...");
+            Console.WriteLine("[N]ovo jogador...");
             Console.WriteLine();
-            Console.WriteLine(".......[P]ular......");
+            Console.WriteLine("[P]ular..........");
             Console.WriteLine();
         }
 

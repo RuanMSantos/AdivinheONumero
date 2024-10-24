@@ -4,13 +4,21 @@ using AdivinheONumero.db;
 UI ui = new UI();
 SQL sql = new SQL();
 string nomeUsuario = "", senhaUsuario = "", emailUsuario = "", numeroUsuario = "";
+string funcao = "";
 bool jogadorEncontrado = true;
+int pontuacaoJogador = 0;
 
 Console.Clear();
 Console.Write("Olá, seja bem vindo ao ==> ");
 ui.ExibirBoasVindas("Adivinhe o número");
 
-ui.ExibirOpcoesDeLogin();
+switch (funcao){
+    case "J":
+    ui.ExibirOpcoesDeLogin();
+    break;
+    case "P":
+    break;
+}
 
 string opcoesLogin = Console.ReadLine()!.Trim().ToUpper().Substring(0, 1);
 
@@ -51,8 +59,11 @@ void CaminhosLogin(string opcoes){
 
             comandosSQL.NovoUsuario(nomeUsuario, emailUsuario, numeroUsuario, senhaUsuario);
             break;
+           
             case "P":
+            nomeUsuario = "Gest";
             break;
+            
             default: ui.ExibirErro("Erro! Algo está errado...");
             break;
         }
