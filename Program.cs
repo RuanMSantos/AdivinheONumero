@@ -1,24 +1,31 @@
 ﻿using AdivinheONumero.cs;
-using AdivinheONumero.db;
 
 UI ui = new UI();
 SQL sql = new SQL();
 string nomeUsuario = "", senhaUsuario = "", emailUsuario = "", numeroUsuario = "";
 string funcao = "";
-bool jogadorEncontrado = true;
-int pontuacaoJogador = 0;
+bool jogadorEncontrado = true, guest = false;
+int partidas = 0;
+int vitoriasJogador = 0, derrotasJogador = 0;
+int id = 0;
 
 Console.Clear();
 Console.Write("Olá, seja bem vindo ao ==> ");
 ui.ExibirBoasVindas("Adivinhe o número");
 
+Console.WriteLine();
+ui.ExibirTelaInicial();
+Console.WriteLine();
+
+funcao = Console.ReadLine()!.Trim().ToUpper().Substring(0, 1);
+
 switch (funcao){
-    case "J":
-    ui.ExibirOpcoesDeLogin();
+    case "J": ui.ExibirOpcoesDeLogin();
     break;
-    case "P":
+    case "P": sql.ExibirPlacar();
     break;
 }
+if (funcao == "P") return;
 
 string opcoesLogin = Console.ReadLine()!.Trim().ToUpper().Substring(0, 1);
 
@@ -27,6 +34,7 @@ if (opcoesLogin != "L" && opcoesLogin != "N" && opcoesLogin != "P") return;
 if (jogadorEncontrado == false) return;
 
 
+Loop();
 
 
 void CaminhosLogin(string opcoes){
@@ -35,17 +43,17 @@ void CaminhosLogin(string opcoes){
             
         switch (opcoes){
             case "L": 
-            Console.Write("Digite seu usuário: ");
+            Console.Write("\nDigite seu usuário: ");
             nomeUsuario = Console.ReadLine()!;
 
             Console.Write("Digite sua senha: ");
             senhaUsuario = Console.ReadLine()!;
 
-            comandosSQL.Logar(nomeUsuario, senhaUsuario, jogadorEncontrado);
+            comandosSQL.Logar(nomeUsuario, senhaUsuario, jogadorEncontrado, id);
             break;
 
             case "N": 
-            Console.Write("Digite seu nome: ");
+            Console.Write("\nDigite seu nome: ");
             nomeUsuario = Console.ReadLine()!;
 
             Console.Write("Digite seu email: ");
@@ -57,14 +65,19 @@ void CaminhosLogin(string opcoes){
             Console.Write("Digite sua senha: ");
             senhaUsuario = Console.ReadLine()!;
 
-            comandosSQL.NovoUsuario(nomeUsuario, emailUsuario, numeroUsuario, senhaUsuario);
+            comandosSQL.NovoUsuario(nomeUsuario, emailUsuario, numeroUsuario, senhaUsuario, id);
             break;
            
             case "P":
             nomeUsuario = "Guest";
+            guest = true;
             break;
             
             default: ui.ExibirErro("Erro! Algo está errado...");
             break;
         }
+}
+
+void Loop(){
+    
 }

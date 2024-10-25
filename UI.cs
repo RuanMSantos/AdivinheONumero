@@ -24,5 +24,16 @@ namespace AdivinheONumero.cs{
             Console.WriteLine();
         }
 
+        public void ExibirTelaInicial(){
+            Console.WriteLine("O que você que fazer?\n");
+            Console.WriteLine("[J]ogar");
+            Console.WriteLine("Ver [P]lacar");
+        }
+
+        public void ExibirVitoria(string texto){
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{texto}");
+            Console.ResetColor();
+        }
     }
 }
