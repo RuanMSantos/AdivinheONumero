@@ -61,7 +61,7 @@ void CaminhosLogin(string opcoes){
             break;
            
             case "P":
-            nomeUsuario = "Gest";
+            nomeUsuario = "Guest";
             break;
             
             default: ui.ExibirErro("Erro! Algo está errado...");
