@@ -5,14 +5,12 @@ SQL sql = new SQL();
 Game game = new Game();
 string nomeUsuario = "", senhaUsuario = "", emailUsuario = "", numeroUsuario = "";
 string funcao = "", jogarNovamente = "";
-bool jogadorEncontrado = true, guest = false;
+bool jogadorEncontrado = true, guest = false, verificador = true;
 int partida = 0;
 int vitoriasJogador = 0, derrotasJogador = 0, vitoriaTotal = 0, derrotaTotal = 0;
 int identificador = 0, numeroAleatorio = 0, numeroDigitado = 0, id = 0, maquina = 0, jogada = 0;
 
-Console.Clear();
-Console.Write("Olá, seja bem vindo ao ==> ");
-ui.ExibirBoasVindas("Adivinhe o número");
+ui.ExibirComeco(verificador);
 
 Console.WriteLine();
 ui.ExibirTelaInicial();
@@ -81,6 +79,7 @@ void CaminhosLogin(string opcoes){
 
 void Loop(){
     Console.Clear();
+    ui.ExibirComeco();
     partida++;
     maquina = game.GerarNumeroAleatorio(numeroAleatorio);
     jogada = game.Jogar(numeroDigitado);

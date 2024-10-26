@@ -48,13 +48,16 @@ namespace AdivinheONumero.cs{
 
         public void ExibirPlacar(){
             
+            UI ui = new UI();
+            
+            ui.ExibirComeco();
+
             int posicao = 1;
             
-            Console.WriteLine("\nPlacar\n");
+            Console.WriteLine("\nPLACAR\n");
             
             using (var _db = new DbAdivinheONumeroContext()){
 
-                UI ui = new UI();
 
                 var jogo = _db.Jogo.ToList<Jogo>()
                         .OrderByDescending(j => j.NrVitoria);
@@ -67,9 +70,10 @@ namespace AdivinheONumero.cs{
                 }
 
                 foreach (var j in jogo){
-                    Console.WriteLine($"{posicao}° {j.NmJogador} {j.NrVitoria} vitória(s)");
+                    Console.WriteLine($"{posicao}° {j.NmJogador} {j.NrVitoria} vitória(s) em {j.NrPartida} partida(s).");
                     posicao++;
                 }
+                Console.WriteLine();
             }
         }        
     

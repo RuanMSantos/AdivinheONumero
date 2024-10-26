@@ -15,6 +15,7 @@ namespace AdivinheONumero.cs{
 
         }
         public void ExibirOpcoesDeLogin(){
+            ExibirComeco();
             Console.WriteLine();
             Console.WriteLine("[L]ogin..........");
             Console.WriteLine();
@@ -41,7 +42,17 @@ namespace AdivinheONumero.cs{
             Console.WriteLine($"\n{nome}: {partidasJogador} partida(s), {vitoriasJogador} vitória(s), {derrotasJogador} derrota(s).");
 
             Thread.Sleep(200);
-            Console.WriteLine("\nAté a próxima!");
+            Console.WriteLine("\nAté a próxima!\n");
+        }
+
+        public void ExibirComeco(bool verificador){
+            Console.Clear();
+            Console.Write("Olá, seja bem vindo ao ==> ");
+            ExibirBoasVindas("ADIVINHE O NÚMERO");
+        }
+        public void ExibirComeco(){
+            Console.Clear();
+            ExibirBoasVindas("ADIVINHE O NÚMERO");
         }
     }
 }

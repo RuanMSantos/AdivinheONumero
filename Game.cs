@@ -2,7 +2,7 @@ namespace AdivinheONumero.cs{
     class Game : Maquina{
         
         public int Jogar(int numero){
-            Console.Write("Adivinhe o número de 1 à 3.   ");
+            Console.Write("\nAdivinhe o número de 1 à 3.   ");
             numero = Convert.ToInt32(Console.ReadLine());
             return numero;
         }
