@@ -83,9 +83,11 @@ namespace AdivinheONumero.cs{
 
                 var jogo = _db.Jogo.Find(id);
 
+                #pragma warning disable CS8602
                 jogo.NrPartida += partidasJogador;
                 jogo.NrVitoria += vitoriasJogador;
                 jogo.NrDerrota += derrotasJogador;
+                #pragma warning restore CS8602
 
                 _db.SaveChanges();
             }
