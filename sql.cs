@@ -18,8 +18,11 @@ namespace AdivinheONumero.cs{
                     verificador = false;
                 }
 
-                var jogador = jogo.ElementAt(1);
+                var jogador = jogo.ElementAt(0);
                 id = jogador.IdJogador;
+
+                Console.WriteLine($"\nOlá {jogador.NmJogador}, seja bem vindo de volta!");
+                Thread.Sleep(1000);
             }
         }
 
@@ -46,13 +49,22 @@ namespace AdivinheONumero.cs{
             
             int posicao = 1;
             
-            Console.WriteLine("Placar\n");
+            Console.WriteLine("\nPlacar\n");
             
             using (var _db = new DbAdivinheONumeroContext()){
+
+                UI ui = new UI();
 
                 var jogo = _db.Jogo.ToList<Jogo>()
                         .OrderByDescending(j => j.NrVitoria);
             
+                if (jogo.Count() <= 0){
+                    
+                    ui.ExibirErro("Erro! Ainda não existem jogadores para exibir o placar...");
+
+                    return;
+                }
+
                 foreach (var j in jogo){
                     Console.WriteLine($"{posicao}° {j.NmJogador} {j.NrVitoria} vitória(s)");
                     posicao++;
@@ -60,24 +72,20 @@ namespace AdivinheONumero.cs{
             }
         }        
     
-        public void ModificarPlacarJogador(int partidasJogador, int vitoriasJogador, int derrotasJogador, bool status, int id){
-
-            if (status == false){
-                
-                using (var _db = new DbAdivinheONumeroContext()){
+        public void ModificarPlacarJogador(int partidasJogador, int vitoriasJogador, int derrotasJogador, int id){
+ 
+            using (var _db = new DbAdivinheONumeroContext()){
                     
-                    var jogo = _db.Jogo.Find(id);
+                UI ui = new UI();
 
-                    jogo.NrPartida += partidasJogador;
-                    jogo.NrVitoria += vitoriasJogador;
-                    jogo.NrDerrota += derrotasJogador;
+                var jogo = _db.Jogo.Find(id);
 
-                    _db.SaveChanges();
+                jogo.NrPartida += partidasJogador;
+                jogo.NrVitoria += vitoriasJogador;
+                jogo.NrDerrota += derrotasJogador;
 
-                    Console.WriteLine("");
-                }
-
-            } 
+                _db.SaveChanges();
+            }
         }
     }
 }

@@ -35,5 +35,13 @@ namespace AdivinheONumero.cs{
             Console.WriteLine($"{texto}");
             Console.ResetColor();
         }
+    
+        public void ExibirFinal(int partidasJogador, int vitoriasJogador, int derrotasJogador, string nome){
+
+            Console.WriteLine($"\n{nome}: {partidasJogador} partida(s), {vitoriasJogador} vitória(s), {derrotasJogador} derrota(s).");
+
+            Thread.Sleep(200);
+            Console.WriteLine("\nAté a próxima!");
+        }
     }
 }

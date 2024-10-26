@@ -80,15 +80,23 @@ void CaminhosLogin(string opcoes){
 }
 
 void Loop(){
+    Console.Clear();
     partidas++;
     game.GerarNumeroAleatorio(numeroAleatorio);
     game.Jogar(numeroDigitado);
     game.Analisar(numeroDigitado, numeroAleatorio, vitoriasJogador, derrotasJogador);
     
-    Console.Write("Jogar novamente? ");
+    Console.Write("\nJogar novamente? ");
     jogarNovamente = Console.ReadLine()!.Trim().ToLower().Substring(0, 1);
     
-    if (jogarNovamente == "s") Loop();
+    if (jogarNovamente == "s"){
+        Loop();
+        return;
+    } 
 
-    sql.ModificarPlacarJogador(partidas, vitoriasJogador, derrotasJogador, guest, id);
+    if (guest == false){
+        sql.ModificarPlacarJogador(partidas, vitoriasJogador, derrotasJogador, id);
+    }
+
+    ui.ExibirFinal(partidas, vitoriasJogador, derrotasJogador, nomeUsuario);
 }

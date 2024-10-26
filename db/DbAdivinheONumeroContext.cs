@@ -16,7 +16,7 @@ public partial class DbAdivinheONumeroContext : DbContext
     public virtual DbSet<Jogo> Jogo { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySql("server=localhost;port=3306;uid=root;pwd=root;database=db_adivinhe_o_numero", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.39-mysql"));
+        => optionsBuilder.UseMySql("server=localhost;port=3306;uid=Ruan;pwd=1234;database=db_adivinhe_o_numero", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.39-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
