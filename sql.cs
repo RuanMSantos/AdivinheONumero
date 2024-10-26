@@ -2,7 +2,7 @@ using AdivinheONumero.db;
 
 namespace AdivinheONumero.cs{
     public class SQL{
-        public void Logar(string nome, string senha, bool verificador, int id){
+        public int Logar(string nome, string senha, bool verificador, int id){
 
             using (var _db = new DbAdivinheONumeroContext()){
                 
@@ -24,9 +24,10 @@ namespace AdivinheONumero.cs{
                 Console.WriteLine($"\nOlá {jogador.NmJogador}, seja bem vindo de volta!");
                 Thread.Sleep(1000);
             }
+            return id;
         }
 
-        public void NovoUsuario(string nome, string email, string telefone, string senha, int id){
+        public int NovoUsuario(string nome, string email, string telefone, string senha, int id){
 
                 using (var _db = new DbAdivinheONumeroContext()){
                     
@@ -42,7 +43,7 @@ namespace AdivinheONumero.cs{
 
                     id = jogo.IdJogador;
                 }
-
+                return id;
         }
 
         public void ExibirPlacar(){
@@ -75,8 +76,6 @@ namespace AdivinheONumero.cs{
         public void ModificarPlacarJogador(int partidasJogador, int vitoriasJogador, int derrotasJogador, int id){
  
             using (var _db = new DbAdivinheONumeroContext()){
-                    
-                UI ui = new UI();
 
                 var jogo = _db.Jogo.Find(id);
 

@@ -6,9 +6,9 @@ Game game = new Game();
 string nomeUsuario = "", senhaUsuario = "", emailUsuario = "", numeroUsuario = "";
 string funcao = "", jogarNovamente = "";
 bool jogadorEncontrado = true, guest = false;
-int partidas = 0;
-int vitoriasJogador = 0, derrotasJogador = 0;
-int id = 0, numeroAleatorio = 0, numeroDigitado = 0;
+int partida = 0;
+int vitoriasJogador = 0, derrotasJogador = 0, vitoriaTotal = 0, derrotaTotal = 0;
+int identificador = 0, numeroAleatorio = 0, numeroDigitado = 0, id = 0, maquina = 0, jogada = 0;
 
 Console.Clear();
 Console.Write("Olá, seja bem vindo ao ==> ");
@@ -50,7 +50,7 @@ void CaminhosLogin(string opcoes){
             Console.Write("Digite sua senha: ");
             senhaUsuario = Console.ReadLine()!;
 
-            comandosSQL.Logar(nomeUsuario, senhaUsuario, jogadorEncontrado, id);
+            id = comandosSQL.Logar(nomeUsuario, senhaUsuario, jogadorEncontrado, identificador);
             break;
 
             case "N": 
@@ -66,7 +66,7 @@ void CaminhosLogin(string opcoes){
             Console.Write("Digite sua senha: ");
             senhaUsuario = Console.ReadLine()!;
 
-            comandosSQL.NovoUsuario(nomeUsuario, emailUsuario, numeroUsuario, senhaUsuario, id);
+            id = comandosSQL.NovoUsuario(nomeUsuario, emailUsuario, numeroUsuario, senhaUsuario, identificador);
             break;
            
             case "P":
@@ -81,10 +81,11 @@ void CaminhosLogin(string opcoes){
 
 void Loop(){
     Console.Clear();
-    partidas++;
-    game.GerarNumeroAleatorio(numeroAleatorio);
-    game.Jogar(numeroDigitado);
-    game.Analisar(numeroDigitado, numeroAleatorio, vitoriasJogador, derrotasJogador);
+    partida++;
+    maquina = game.GerarNumeroAleatorio(numeroAleatorio);
+    jogada = game.Jogar(numeroDigitado);
+    vitoriaTotal += game.AnalisarVitoria(jogada, maquina, vitoriasJogador);
+    derrotaTotal += game.AnalisarDerrota(jogada, maquina, derrotasJogador);
     
     Console.Write("\nJogar novamente? ");
     jogarNovamente = Console.ReadLine()!.Trim().ToLower().Substring(0, 1);
@@ -95,8 +96,8 @@ void Loop(){
     } 
 
     if (guest == false){
-        sql.ModificarPlacarJogador(partidas, vitoriasJogador, derrotasJogador, id);
+        sql.ModificarPlacarJogador(partida, vitoriaTotal, derrotaTotal, id);
     }
 
-    ui.ExibirFinal(partidas, vitoriasJogador, derrotasJogador, nomeUsuario);
+    ui.ExibirFinal(partida, vitoriaTotal, derrotaTotal, nomeUsuario);
 }
