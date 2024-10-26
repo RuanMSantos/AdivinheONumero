@@ -66,7 +66,15 @@ namespace AdivinheONumero.cs{
                 
                 using (var _db = new DbAdivinheONumeroContext()){
                     
-                    
+                    var jogo = _db.Jogo.Find(id);
+
+                    jogo.NrPartida += partidasJogador;
+                    jogo.NrVitoria += vitoriasJogador;
+                    jogo.NrDerrota += derrotasJogador;
+
+                    _db.SaveChanges();
+
+                    Console.WriteLine("");
                 }
 
             } 

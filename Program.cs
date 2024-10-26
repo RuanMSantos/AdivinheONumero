@@ -2,12 +2,13 @@
 
 UI ui = new UI();
 SQL sql = new SQL();
+Game game = new Game();
 string nomeUsuario = "", senhaUsuario = "", emailUsuario = "", numeroUsuario = "";
-string funcao = "";
+string funcao = "", jogarNovamente = "";
 bool jogadorEncontrado = true, guest = false;
 int partidas = 0;
 int vitoriasJogador = 0, derrotasJogador = 0;
-int id = 0;
+int id = 0, numeroAleatorio = 0, numeroDigitado = 0;
 
 Console.Clear();
 Console.Write("Olá, seja bem vindo ao ==> ");
@@ -79,5 +80,15 @@ void CaminhosLogin(string opcoes){
 }
 
 void Loop(){
+    partidas++;
+    game.GerarNumeroAleatorio(numeroAleatorio);
+    game.Jogar(numeroDigitado);
+    game.Analisar(numeroDigitado, numeroAleatorio, vitoriasJogador, derrotasJogador);
     
+    Console.Write("Jogar novamente? ");
+    jogarNovamente = Console.ReadLine()!.Trim().ToLower().Substring(0, 1);
+    
+    if (jogarNovamente == "s") Loop();
+
+    sql.ModificarPlacarJogador(partidas, vitoriasJogador, derrotasJogador, guest, id);
 }
