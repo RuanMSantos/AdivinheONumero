@@ -29,6 +29,9 @@ create table if not exists `jogo`(
     primary key (`id_jogador`)
 );
 ```
+
+![Criando banco e tabela](img/bd_1.png)
+![Visualizando tabela](img/bd_2.png)
 ---
 ### Ferramenta EntityFrameworkCore
 No terminal, instale a ferramenta EntityFrameworkCore, realizando o seguinte comando,
@@ -70,5 +73,7 @@ Depois disso, basta realizar o próximo comando substituindo os campos -> string
 ```
 dotnet ef dbcontext scaffold _string_ Pomelo.EntityFrameworkCore.MySql -o _pasta_ -f --no-pluralize
 ```
+
+![Mensagem de sucesso](img/scaffold.png)
 ---
 E pronto. Se todos os passos forem executados corretamente, seu programa já está conectado com o banco de dados!
