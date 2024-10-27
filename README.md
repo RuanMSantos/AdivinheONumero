@@ -76,4 +76,4 @@ dotnet ef dbcontext scaffold _string_ Pomelo.EntityFrameworkCore.MySql -o _pasta
 
 ![Mensagem de sucesso](img/scaffold.png)
 ---
-E pronto. Se todos os passos forem executados corretamente, seu programa já está conectado com o banco de dados!
+E pronto. Se todos os passos forem executados corretamente, seu programa já está conectado com o banco de dados e pronto para ser usado!
